@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Image Compressor</title>
+
+    <!-- bootstrap CDN-->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body class="bg-light">
+        <div class="container vh-100 d-flex justify-content-center align-items-center">
+            <div class="card shadow p-4 " style="width: 400px; border-radius: 15px;">
+                <h3 class="text-center mb-3"> Image Compressor</h3>
+                <form method="POST" enctype="multipart/form-data">
+
+                    <input 
+                    type="file"
+                    name="image"
+                    accept=".jpg,.jpeg,.png,.heic"
+                    class="form-control mb-3"
+                    required
+                    >
+
+                    <button class="btn btn-primary w-100">
+                        Compress Image
+                    </button>
+                </form>
+
+                <a href="/" class="text-center mt-3 d-block">Back Home</a>
+            </div>
+        </div>
+    </body>
+</html>
