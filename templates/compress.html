@@ -2,6 +2,8 @@
 <html>
     <head>
         <title>Image Compressor</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-B43QJG90XF"></script>
 <script>
@@ -14,20 +16,46 @@
 
     <!-- bootstrap CDN-->
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+     <style>
+        .upload-box {
+            border: 2px dashed #0d6efd;
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            background: #f8f9fa;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .upload-box:hover {
+            background-color: #e9ecef;
+        }
+
+        #preview {
+            max-width: 200px;
+            margin-top: 15px;
+            display: none;
+        }
+     </style>
     </head>
     <body class="bg-light">
         <div class="container vh-100 d-flex justify-content-center align-items-center">
             <div class="card shadow p-4 " style="width: 400px; border-radius: 15px;">
                 <h3 class="text-center mb-3"> Image Compressor</h3>
                 <form method="POST" enctype="multipart/form-data">
-
+                    <label class="upload-box w-100">
                     <input 
                     type="file"
                     name="image"
+                    id="fileInput"
                     accept=".jpg,.jpeg,.png,.heic"
                     class="form-control mb-3"
-                    required
+                    hidden required
                     >
+                    <p class="mb-0">Click or Drop Image Here</p>
+                    <img id="preview">
+                </label>
 
                     <button class="btn btn-primary w-100">
                         Compress Image
@@ -37,5 +65,20 @@
                 <a href="/" class="text-center mt-3 d-block">Back Home</a>
             </div>
         </div>
+
+        <!--Preview-->
+        <script>
+            const input = document.getElementById("fileInput");
+            const preview = document.getElementById("preview");
+
+            input.addEventListener("change", function() {
+                const file = this.files[0];
+
+                if (file) {
+                    preview.src = URL.createObjectURL(file);
+                    preview.style.display = "block";
+                }
+            });
+        </script>
     </body>
 </html>
